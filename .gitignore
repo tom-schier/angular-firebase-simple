@@ -9,6 +9,9 @@
 # dependencies
 /node_modules
 
+#other
+/src/environments
+
 # IDEs and editors
 /.idea
 .project
@@ -25,7 +28,6 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
-/src/environments
 
 # misc
 /.sass-cache
