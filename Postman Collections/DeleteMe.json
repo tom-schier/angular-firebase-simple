@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "77dda008-2e65-46f1-b9f8-9689e6bab3d6",
+		"name": "Mock Data Holder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public API - Get Status",
+			"_postman_id": "44ac35fc-1ae8-4671-9056-2792c2ae2b81",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-v",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": "https://localhost:8000/cds-au/v1/discovery/status"
+			},
+			"response": []
+		},
+		{
+			"name": "Public API - Get Outages",
+			"_postman_id": "7b2a8e7e-3d16-4383-bdf5-9a0ea040d6dd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-v",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:8000/cds-au/v1/discovery/outages",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cds-au",
+						"v1",
+						"discovery",
+						"outages"
+					],
+					"query": [
+						{
+							"key": "x-v",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InfoSec - Get OIDC Config",
+			"_postman_id": "1ce2b2b6-d160-45ba-a239-9ca5bd560823",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:8001/.well-known/openid-configuration"
+			},
+			"response": []
+		},
+		{
+			"name": "InfoSec - Get OIDC JWKS",
+			"_postman_id": "7bc27732-3d51-4963-ba37-29b70aa3b02e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:8001/.well-known/openid-configuration/jwks"
+			},
+			"response": []
+		},
+		{
+			"name": "Resource API - Get Common Customer - Person",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require('moment');\r",
+							"var dateFormat = \"ddd, DD MMM yyyy hh:mm:ss [GMT]\";\r",
+							"var fapiDate = moment().format(dateFormat);\r",
+							"pm.globals.set(\"x-fapi-auth-date\", fapiDate);"
+						],
+						"type": "text/javascript",
+						"id": "95bca2b4-3b71-454a-aeee-f6d0926890dc"
+					}
+				}
+			],
+			"_postman_id": "b616bbd3-5b88-4c32-a990-ae3ce03636c7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "add your DCR access token in here"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-v",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-auth-date",
+						"value": "{{x-fapi-auth-date}}",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-interaction-id",
+						"value": "123",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": "https://localhost:8002/cds-au/v1/common/customer"
+			},
+			"response": []
+		},
+		{
+			"name": "Resource API - Get Common Customer - Person - Middle Names",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require('moment');\r",
+							"var dateFormat = \"ddd, DD MMM yyyy hh:mm:ss [GMT]\";\r",
+							"var fapiDate = moment().format(dateFormat);\r",
+							"pm.globals.set(\"x-fapi-auth-date\", fapiDate);"
+						],
+						"type": "text/javascript",
+						"id": "5b5bfa81-b23e-4fc2-81d7-82d04554d6b2"
+					}
+				}
+			],
+			"_postman_id": "d4fb3516-1588-4a67-ad22-eb5d97b081e6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "add your DCR access token in here"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-v",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-auth-date",
+						"value": "{{x-fapi-auth-date}}",
+						"type": "text"
+					}
+				],
+				"url": "https://localhost:8002/cds-au/v1/common/customer"
+			},
+			"response": []
+		},
+		{
+			"name": "Resource API - Get Common Customer - Person - Occupation Code",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require('moment');\r",
+							"var dateFormat = \"ddd, DD MMM yyyy hh:mm:ss [GMT]\";\r",
+							"var fapiDate = moment().format(dateFormat);\r",
+							"pm.globals.set(\"x-fapi-auth-date\", fapiDate);"
+						],
+						"type": "text/javascript",
+						"id": "183f4333-c0ed-44f6-bead-48c1af3166bc"
+					}
+				}
+			],
+			"_postman_id": "8e625ae4-3791-420a-9af7-6e5f6fdd9677",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "add your DCR access token in here"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-v",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-auth-date",
+						"value": "{{x-fapi-auth-date}}",
+						"type": "text"
+					}
+				],
+				"url": "https://localhost:8002/cds-au/v1/common/customer"
+			},
+			"response": []
+		},
+		{
+			"name": "Resource API - Get Common Customer - Organisation",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require('moment');\r",
+							"var dateFormat = \"ddd, DD MMM yyyy hh:mm:ss [GMT]\";\r",
+							"var fapiDate = moment().format(dateFormat);\r",
+							"pm.globals.set(\"x-fapi-auth-date\", fapiDate);"
+						],
+						"type": "text/javascript",
+						"id": "b7822133-ce08-455d-b2b6-50f239c24b9c"
+					}
+				}
+			],
+			"_postman_id": "dd107a06-7fd9-4a95-aaa7-aca8120979d0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "add your DCR access token in here"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-v",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-fapi-auth-date",
+						"value": "{{x-fapi-auth-date}}",
+						"type": "text"
+					}
+				],
+				"url": "https://localhost:8002/cds-au/v1/common/customer"
+			},
+			"response": []
+		}
+	]
+}
